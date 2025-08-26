@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="09149ede-aac0-45af-a339-deeae619391c" name="Quiz.sqlite Mapping">
+      <data-sources db="a72db20c-b1f9-4fa6-bad6-dcb994ff25e5" ddl="9105582f-071b-4cd7-8919-4559f00f3cb5" />
+      <scope>
+        <node negative="1">
+          <node kind="database" negative="1" />
+          <node kind="schema" qname="main" />
+        </node>
+      </scope>
+    </mapping>
+  </component>
+</project>
