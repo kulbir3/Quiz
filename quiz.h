@@ -37,7 +37,7 @@ Quiz();
   void setmode(GameMode gm);
   void loadquestions(sqlite3 *db, int limit, const string &difficulty="", const string &category="");
   void savescore(sqlite3 *db, const string &playername);
-  void classic(sqlite3 *db, const string &difficulty,const string &category);
+  void mode(sqlite3 *db, const string &difficulty,const string &category);
 };
 #endif
 

@@ -1,10 +1,6 @@
 #include "quiz.h"
 #include <iostream>
-typedef enum Mode{
-    CLASSIC = 1,
-    TIMED,
-    SURVIVAL
-} Mode;
+using namespace std;
 
 using namespace std;
 int main() {
@@ -21,8 +17,15 @@ sqlite3 *db;
         cout << "\n3. Survival\nEnter choice (1-3): ";
         cin >> modeChoice;
         switch (modeChoice) {
-          case CLASSIC: classic();
+          case CLASSIC:{
+            string difficulty, category;
+             cout << "Enter Difficulty (Easy/Medium/Hard): ";
+             cin >> difficulty;
+             cout << "Enter Category (Math/Science/General): ";
+             cin >> category;
+             qz.mode(db, difficulty, category);
           break;
+          }
 
           case TIMED: cout<<"Comming soon!"<<endl;
           break;
@@ -32,10 +35,12 @@ sqlite3 *db;
 
           default: cout<<"Wrong Choice!"<<endl;
 }
-        Cout << "Do you want to play again?(y/n):";
+        cout << "Do you want to play again?(y/n):";
         cin >> playAgain;
         if (playAgain == 'y' || playAgain == 'Y')break;
-sqlite3_close(db);
-cout<<"Thanks for playing!"<<endl;
-return 0;
+}
+  sqlite3_close(db);
+   cout<<"Thanks for playing!"<<endl;
+      
+ return 0;
 }
