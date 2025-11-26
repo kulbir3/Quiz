@@ -9,7 +9,6 @@ using namespace std;
 
     
      sqlite3_stmt *stmt;
-     cout << "Executing SQL: " << sql << endl;
 
      if (sqlite3_prepare_v2(db, sql.c_str(), -1, &stmt, nullptr) != SQLITE_OK) {
         cerr << "Failed to fetch questions: " << sqlite3_errmsg(db) << endl;

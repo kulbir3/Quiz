@@ -1,10 +1,22 @@
 #include "quiz.h"
 #include <iostream>
+#include <string>
 #include <sqlite3.h>
 using namespace std;
 
 void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     reset();
+    string name;
+    cout<<"Enter your name: ";
+    cin>>name;           
+    for(int i = 0; i<name.length(); i++){
+        name[i]=toupper(name[i]);
+        }
+
+   if (name.empty()) {
+    cout << "Name cannot be empty!\n";
+    return;
+}
 
     loadquestions(db, 5, difficulty, category);
 
@@ -33,4 +45,5 @@ void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     }
 
     displayscore();
+    savescore(db, name, difficulty, category);
 }
