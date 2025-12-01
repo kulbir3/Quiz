@@ -7,16 +7,21 @@ using namespace std;
 void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     reset();
     string name;
-    cout<<"Enter your name: ";
-    cin>>name;           
-    for(int i = 0; i<name.length(); i++){
-        name[i]=toupper(name[i]);
-        }
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+    while(1){
 
-   if (name.empty()) {
-    cout << "Name cannot be empty!\n";
-    return;
-}
+    cout<<"Enter your name: "; 
+     getline(cin, name);
+
+    if(!isValidName(name)){
+        cout<<"Invalid Name! Only alphabet allowed\n";
+        continue;
+    }           
+       for (char &c : name)
+        c = toupper(c);
+
+    break; 
+    }
 
     loadquestions(db, 5, difficulty, category);
 
@@ -33,8 +38,18 @@ void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
             cout << char('A' + j) << ". " << questions[i].options[j] << endl;
         }
 
-        cout << "Your answer: ";
-        cin >> userans;
+           while(1){
+           cout << "Your answer(A-D): ";
+           cin >> userans;
+
+          if(!isValidOption(userans)){
+          cout<<"Invalid options! Only A,B,C,D allowed.\n";
+          continue;
+
+    }
+          userans = toupper(userans);
+          break;
+}
 
         if (toupper(userans) == toupper(questions[i].correctOption)) {
             cout << "Correct!\n";
@@ -47,3 +62,4 @@ void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     displayscore();
     savescore(db, name, difficulty, category);
 }
+ 
