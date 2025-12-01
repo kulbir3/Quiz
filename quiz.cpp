@@ -18,7 +18,7 @@ sqlite3 *db;
         cin >> modeChoice;
         switch (modeChoice) {
           case CLASSIC:{
-            string difficulty, category;
+             string difficulty, category;
              cout << "Enter Difficulty (Easy/Medium/Hard): ";
              cin >> difficulty;
              cout << "Enter Category (Math/Science/General): ";
@@ -27,17 +27,24 @@ sqlite3 *db;
           break;
           }
 
-          case TIMED: cout<<"Comming soon!"<<endl;
+          case TIMED:cout<<"Comming soon!"<<endl;
           break;
 
-          case SURVIVAL: cout<<"Comming soon!"<<endl;
+          case SURVIVAL:{
+            string difficulty, category;
+             cout << "Enter Difficulty (Easy/Medium/Hard): ";
+             cin >> difficulty;
+             cout << "Enter Category (Math/Science/General): ";
+             cin >> category;
+             qz.mode1(db, difficulty, category);
           break;
+          }
 
           default: cout<<"Wrong Choice!"<<endl;
 }
         cout << "Do you want to play again?(y/n):";
         cin >> playAgain;
-        if (playAgain == 'y' || playAgain == 'Y')break;
+        if (playAgain == 'n' || playAgain == 'N')break;
 }
   sqlite3_close(db);
    cout<<"Thanks for playing!"<<endl;

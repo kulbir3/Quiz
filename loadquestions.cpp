@@ -5,7 +5,7 @@ using namespace std;
    questions.clear();
    string sql = "SELECT question_text, A, B, C, D, correct_option, difficulty, category "
                   "FROM Questions WHERE difficulty = ? AND category = ? "
-                  "ORDER BY RANDOM() LIMIT 5";
+                  "ORDER BY RANDOM() LIMIT ?";
 
     
      sqlite3_stmt *stmt;
