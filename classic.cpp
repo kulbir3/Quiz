@@ -60,6 +60,6 @@ void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     }
 
     displayscore();
-    savescore(db, name, difficulty, category);
+    savescore(db, name,"CLASSIC", difficulty, category, 0);
 }
  

@@ -1,9 +1,12 @@
 #include "quiz.h"
 #include <iostream>
+#include <chrono>
+#include <thread>
+#include <atomic>
 
 using namespace std;
 
-void Quiz::Mode1(sqlite3 *db){
+void Quiz::Mode2(sqlite3 *db){
     reset();
 
     string name;
@@ -23,14 +26,22 @@ void Quiz::Mode1(sqlite3 *db){
     break; 
     }
 
-        set<int> askedIDs;
-while(1){
-    loadquestions1(db, askedIDs);
+    atomic<bool> timeup(false);
+    int timelimit = 30;
+
+    thread timer([&] (){
+        this_thread::sleep_for(chrono::seconds(timelimit));
+        timeup = true;
+    });
+
+    set<int> askedIDs;
+    while(!timeup){
+        loadquestions1(db,askedIDs);
     if (questions.empty()) {
-        cout << "No questions found" << endl;
-        return;
+        cout << "All questions asked!\n" << endl;
+        break;
     }
-        askedIDs.insert(questions[0].id);
+    askedIDs.insert(questions[0].id);
 
     cout << "\nQ: " << questions[0].questionText << endl;
     for (int j = 0; j < 4; j++)
@@ -49,18 +60,18 @@ while(1){
     userAns = toupper(userAns);
     break;
 }
+if(timeup)
+break;
 
-    if (userAns == toupper(questions[0].correctOption)) {
+ if (userAns == toupper(questions[0].correctOption)) {
         cout << "Correct!\n";
         score++;
-    } else {
-        cout << "Wrong! Correct answer: " << questions[0].correctOption << endl;
-        cout << "\nGAME OVER!\n";
-        displayscore();
-        savescore(db, name, "SURVIVAL","","", 0);
-        return;
+    }else{
+        cout<<"Wrong answer!\n";
+    }
 }
-     displayscore();
-     savescore(db, name, "SURVIVAL","","",0); 
-}
+    timer.join();
+    cout<<"Times over or all question finished!\n"; 
+    displayscore();
+    savescore(db, name, "TIMED","","", 30); 
 }

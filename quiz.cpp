@@ -27,16 +27,13 @@ sqlite3 *db;
           break;
           }
 
-          case TIMED:cout<<"Comming soon!"<<endl;
+          case TIMED:{
+             qz.Mode2(db);
           break;
+          }
 
           case SURVIVAL:{
-            string difficulty, category;
-             cout << "Enter Difficulty (Easy/Medium/Hard): ";
-             cin >> difficulty;
-             cout << "Enter Category (Math/Science/General): ";
-             cin >> category;
-             qz.mode1(db, difficulty, category);
+             qz.Mode1(db);
           break;
           }
 
@@ -46,6 +43,7 @@ sqlite3 *db;
         cin >> playAgain;
         if (playAgain == 'n' || playAgain == 'N')break;
 }
+
   sqlite3_close(db);
    cout<<"Thanks for playing!"<<endl;
       
