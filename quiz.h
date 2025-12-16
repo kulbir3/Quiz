@@ -55,6 +55,8 @@ Quiz();
   bool isValidOption(char ans);
   bool isValidName(const string &name);  
 };
+SHOW_SCORE,
+Exit in enum
 #endif
 
 
