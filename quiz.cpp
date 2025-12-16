@@ -16,16 +16,22 @@ sqlite3 *db;
         cout << "Select Game Mode:\n1. Classic\n2. Timed";
         cout << "\n3. Survival\nEnter choice (1-3): ";
         cin >> modeChoice;
-        switch (modeChoice) {
-          case CLASSIC:{
-             string difficulty, category;
-             cout << "Enter Difficulty (Easy/Medium/Hard): ";
-             cin >> difficulty;
-             cout << "Enter Category (Math/Science/General): ";
-             cin >> category;
-             qz.mode(db, difficulty, category);
-          break;
+        case SHOW_SCORE:{
+            string mode;
+            cout<<"Enter mode(CLASSIC / SURVIVAL/ TIMED): ";
+            cin>>mode;
+            
+            for(char &c: mode)c = toupper(c);
+            if(mode != "CLASSIC"&& mode != "SURVIVAL"&& mode != "TIMED"){
+               cout<<"Invalid choice!\n";
+               break;
+            }
+            qz.showscore(db, mode);
+            break;
           }
+case Exit:{
+            return 0;
+          }
 
           case TIMED:{
              qz.Mode2(db);
