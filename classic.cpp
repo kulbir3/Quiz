@@ -1,4 +1,5 @@
 #include "quiz.h"
+#include  "quiz_ui.h"
 #include <iostream>
 #include <string>
 #include <sqlite3.h>
@@ -6,6 +7,7 @@ using namespace std;
 
 void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
     reset();
+    printHeader("CLASSIC MODE");
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     while(1){
@@ -57,6 +59,7 @@ void Quiz::mode(sqlite3 *db, const string &difficulty, const string &category) {
         } else {
             cout << "Wrong! Correct answer: " << questions[i].correctOption << endl;
         }
+        printScoreBox(score);
     }
 
     displayscore();

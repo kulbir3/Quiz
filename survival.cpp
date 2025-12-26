@@ -1,10 +1,12 @@
 #include "quiz.h"
+#include  "quiz_ui.h"
 #include <iostream>
 
 using namespace std;
 
 void Quiz::Mode1(sqlite3 *db){
     reset();
+    printHeader("SURVIAL MODE");
 
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
@@ -60,6 +62,7 @@ while(1){
         savescore(db, name, "SURVIVAL","","", 0);
         return;
 }
+     printScoreBox(score);
      displayscore();
      savescore(db, name, "SURVIVAL","","",0); 
 }

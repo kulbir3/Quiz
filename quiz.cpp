@@ -1,5 +1,6 @@
 #include "quiz.h"
 #include <iostream>
+#include "quiz_ui.h"
 using namespace std;
 
 using namespace std;
@@ -13,10 +14,32 @@ sqlite3 *db;
       int modeChoice;
       char playAgain;
       while(1){
+        printHeader("QUIZ GAME MAIN MENU");
         cout << "Select Game Mode:\n1. Classic\n2. Timed";
-        cout << "\n3. Survival\nEnter choice (1-3): ";
+        cout << "\n3. Survival\n4. SHOW SCORE\n5. Exit \nEnter choice (1-5): ";
         cin >> modeChoice;
-        case SHOW_SCORE:{
+        switch (modeChoice) {
+          case CLASSIC:{
+             string difficulty, category;
+             cout << "Enter Difficulty (Easy/Medium/Hard): ";
+             cin >> difficulty;
+             cout << "Enter Category (Math/Science/General): ";
+             cin >> category;
+             qz.mode(db, difficulty, category);
+          break;
+          }
+
+          case TIMED:{
+             qz.Mode2(db);
+          break;
+          }
+
+          case SURVIVAL:{
+             qz.Mode1(db);
+          break;
+          }
+            
+          case SHOW_SCORE:{
             string mode;
             cout<<"Enter mode(CLASSIC / SURVIVAL/ TIMED): ";
             cin>>mode;
@@ -29,18 +52,8 @@ sqlite3 *db;
             qz.showscore(db, mode);
             break;
           }
-case Exit:{
-            return 0;
-          }
-
-          case TIMED:{
-             qz.Mode2(db);
-          break;
-          }
-
-          case SURVIVAL:{
-             qz.Mode1(db);
-          break;
+          case Exit:{
+            return 0;
           }
 
           default: cout<<"Wrong Choice!"<<endl;

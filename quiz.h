@@ -15,6 +15,8 @@ typedef enum GameMode{
 CLASSIC=1,
 TIMED,
 SURVIVAL,
+SHOW_SCORE,
+EXIT
 }GameMode;
 
 class Question{
@@ -55,8 +57,6 @@ Quiz();
   bool isValidOption(char ans);
   bool isValidName(const string &name);  
 };
-SHOW_SCORE,
-Exit in enum
 #endif
 
 
