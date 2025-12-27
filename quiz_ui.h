@@ -30,10 +30,11 @@ inline void printScoreBox(int score = 0) {
 
 inline void printLeaderboardHeader(const string &mode) {
     cout << "\n==================== " << mode << " SCORES ====================\n";
-    cout << left << setw(20) << "PLAYER NAME" 
+    cout << left
+         << setw(20) << "NAME" 
          << setw(10) << "SCORE" 
          << setw(10) << "TIME" 
-         << setw(15) << "DATE" << endl;
+         << setw(20) << "DATE" << endl;
     cout << "------------------------------------------------------------\n";
 }
 

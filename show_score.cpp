@@ -21,11 +21,12 @@ void Quiz::showscore(sqlite3 *db, const string& mode){
     printLeaderboardHeader(mode);
     
     while(sqlite3_step(stmt)== SQLITE_ROW){
-        cout<<sqlite3_column_text(stmt,0)
-            <<" | Score: "<<sqlite3_column_int(stmt, 1)
-            <<" | Time: "<<sqlite3_column_int(stmt, 2)
-            <<" | Date: "<<sqlite3_column_text(stmt, 3)
-            <<endl;
+        cout<<left
+         << setw(20) << sqlite3_column_text(stmt, 0)
+         << setw(10) << sqlite3_column_int(stmt, 1)   
+         << setw(10) << sqlite3_column_int(stmt, 2)    
+         << setw(20) << sqlite3_column_text(stmt, 3) 
+         <<endl;
     }
     printLeaderboardFooter();
     sqlite3_finalize(stmt);

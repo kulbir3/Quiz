@@ -9,7 +9,6 @@ void Quiz::Mode1(sqlite3 *db){
     reset();
     printHeader("SURVIAL MODE");
 
-    printHeader("SURVIVAL MODE");
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     while(1){

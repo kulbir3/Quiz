@@ -12,7 +12,6 @@ void Quiz::Mode2(sqlite3 *db){
     reset();
     printHeader("TIMED MODE");
 
-    printHeader("TIMED MODE");
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     while(1){
@@ -71,7 +70,7 @@ break;
         cout << "Correct!\n";
         score++;
     }else{
-        cout<<"Wrong answer!\n";
+        cout<<"Wrong! Correct answer: " << questions[0].correctOption << endl;
     }
     printScoreBox(score);
 }
