@@ -1,4 +1,5 @@
 #include "quiz.h"
+#include  "quiz_ui.h"
 #include <iostream>
 #include "quiz_ui.h"
 
@@ -6,6 +7,7 @@ using namespace std;
 
 void Quiz::Mode1(sqlite3 *db){
     reset();
+    printHeader("SURVIAL MODE");
 
     printHeader("SURVIVAL MODE");
     string name;

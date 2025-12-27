@@ -1,5 +1,6 @@
 #include "quiz.h"
 #include <iostream>
+#include "quiz_ui.h"
 #include <chrono>
 #include <thread>
 #include "quiz_ui.h"
@@ -9,6 +10,7 @@ using namespace std;
 
 void Quiz::Mode2(sqlite3 *db){
     reset();
+    printHeader("TIMED MODE");
 
     printHeader("TIMED MODE");
     string name;

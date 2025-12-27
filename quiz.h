@@ -16,7 +16,7 @@ CLASSIC=1,
 TIMED,
 SURVIVAL,
 SHOW_SCORE,
-Exit
+EXIT
 }GameMode;
 
 class Question{
@@ -47,6 +47,7 @@ Quiz();
   void reset();
   void displayscore();
   void setmode(GameMode gm);
+  void showscore(sqlite3 *db, const string& mode);
   void loadquestions(sqlite3 *db, int limit, const string &difficulty="", const string &category="");
   void loadquestions(sqlite3 *db,const std::set<int> &askedIDs = std::set<int>()); 
   void savescore(sqlite3* db, const string& name, const string& modename, const string& difficulty, const string& category, int time);

@@ -1,4 +1,5 @@
 #include "quiz.h"
+#include "quiz_ui.h"
 #include <iostream>
 #include <string>
 #include "quiz_ui.h"

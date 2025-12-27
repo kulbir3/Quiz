@@ -52,7 +52,7 @@ sqlite3 *db;
             qz.showscore(db, mode);
             break;
           }
-          case Exit:{
+          case EXIT:{
             return 0;
           }
 
