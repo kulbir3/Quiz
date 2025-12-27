@@ -4,7 +4,7 @@
 void Quiz::savescore(sqlite3* db, const string& name, const string& modename, const string& difficulty, const string& category, int time) {
 
     string sql = 
-           "INSERT INTO Score1 (player_name, mode, difficulty, category, score, time)"
+           "INSERT INTO score (player_name, mode, difficulty, category, score, time)"
            "VALUES (?, ?, ?, ?, ?, ?)"
            "ON CONFLICT(player_name, mode, difficulty, category) DO UPDATE SET "
            "mode = excluded.mode, "

@@ -4,7 +4,7 @@ using namespace std;
  void Quiz::loadquestions(sqlite3 *db,int limit, const string &difficulty, const string &category){
    questions.clear();
    string sql = "SELECT question_text, A, B, C, D, correct_option, difficulty, category "
-                  "FROM Questions WHERE difficulty = ? AND category = ? "
+                  "FROM Questions WHERE UPPER(difficulty) = UPPER(?) AND UPPER(category) = UPPER(?) "
                   "ORDER BY RANDOM() LIMIT ?";
 
     

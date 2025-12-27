@@ -2,6 +2,7 @@
 #include <iostream>
 #include <chrono>
 #include <thread>
+#include "quiz_ui.h"
 #include <atomic>
 
 using namespace std;
@@ -9,6 +10,7 @@ using namespace std;
 void Quiz::Mode2(sqlite3 *db){
     reset();
 
+    printHeader("TIMED MODE");
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     while(1){
@@ -36,7 +38,7 @@ void Quiz::Mode2(sqlite3 *db){
 
     set<int> askedIDs;
     while(!timeup){
-        loadquestions1(db,askedIDs);
+        loadquestions(db,askedIDs);
     if (questions.empty()) {
         cout << "All questions asked!\n" << endl;
         break;
@@ -69,6 +71,7 @@ break;
     }else{
         cout<<"Wrong answer!\n";
     }
+    printScoreBox(score);
 }
     timer.join();
     cout<<"Times over or all question finished!\n"; 

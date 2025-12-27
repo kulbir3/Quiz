@@ -1,11 +1,13 @@
 #include "quiz.h"
 #include <iostream>
+#include "quiz_ui.h"
 
 using namespace std;
 
 void Quiz::Mode1(sqlite3 *db){
     reset();
 
+    printHeader("SURVIVAL MODE");
     string name;
     cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
     while(1){
@@ -25,7 +27,7 @@ void Quiz::Mode1(sqlite3 *db){
 
         set<int> askedIDs;
 while(1){
-    loadquestions1(db, askedIDs);
+    loadquestions(db, askedIDs);
     if (questions.empty()) {
         cout << "No questions found" << endl;
         return;
@@ -60,7 +62,8 @@ while(1){
         savescore(db, name, "SURVIVAL","","", 0);
         return;
 }
+     printScoreBox(score);
      displayscore();
      savescore(db, name, "SURVIVAL","","",0); 
-}
+   }
 }

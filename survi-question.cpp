@@ -1,7 +1,7 @@
 #include "quiz.h"
 using namespace std;
 
- void Quiz::loadquestions1(sqlite3 *db,const set<int> &askedIDs){
+ void Quiz::loadquestions(sqlite3 *db,const set<int> &askedIDs){
    questions.clear();
    string sql = "SELECT question_id,question_text, A, B, C, D, correct_option "
              "FROM Questions";

@@ -15,6 +15,8 @@ typedef enum GameMode{
 CLASSIC=1,
 TIMED,
 SURVIVAL,
+SHOW_SCORE,
+Exit
 }GameMode;
 
 class Question{
@@ -46,9 +48,10 @@ Quiz();
   void displayscore();
   void setmode(GameMode gm);
   void loadquestions(sqlite3 *db, int limit, const string &difficulty="", const string &category="");
-  void loadquestions1(sqlite3 *db,const std::set<int> &askedIDs = std::set<int>()); 
+  void loadquestions(sqlite3 *db,const std::set<int> &askedIDs = std::set<int>()); 
   void savescore(sqlite3* db, const string& name, const string& modename, const string& difficulty, const string& category, int time);
   void mode(sqlite3 *db, const string &difficulty,const string &category);
+  void showscore(sqlite3 *db, const string& mode);
   void Mode1(sqlite3 *db);
   void Mode2(sqlite3 *db);
   bool isValidOption(char ans);
